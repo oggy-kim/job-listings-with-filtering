@@ -1,0 +1,100 @@
+@import '../style.global.scss';
+
+.container {
+  display: flex;
+  margin: 10px 0 10px 0;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px $neutral-filter-tablets;
+
+  &.featured {
+    border-left: 6px solid $dark-grayish;
+  }
+}
+
+.img {
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.firstcontainer {
+  display: flex;
+  align-items: center;
+  font-weight: $weights-bold;
+  color: $primary;
+}
+
+.icon {
+  border-radius: 20px;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  font-size: 0.8rem;
+
+  &.new {
+    background-color: $primary;
+    margin-left: 15px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  &.featured {
+    background-color: black;
+    margin-left: 10px;
+  }
+}
+
+.jobdiscription {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.position {
+  font-weight: $weights-bold;
+  font-size: 1.3rem;
+  &:hover {
+    color: $primary;
+    cursor: pointer;
+  }
+}
+
+.info {
+  color: $primary;
+
+  & > span {
+    margin: 0 1.2rem 0 1.2rem;
+  }
+
+  & > span:first-child {
+    margin-left: 0;
+  }
+}
+
+.types {
+  display: flex;
+  margin-left: auto;
+}
+
+.options {
+  margin-left: auto;
+  align-self: center;
+}
+
+.option {
+  color: $primary;
+  font-size: 0.8rem;
+  font-weight: $weights-bold;
+  font-family: 'Spartan';
+  background-color: $neutral-background;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: $dark-grayish;
+  }
+}

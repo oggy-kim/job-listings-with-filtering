@@ -3,9 +3,10 @@ import svg from '../assets/images/bg-header-desktop.svg';
 import styled from 'styled-components';
 
 const StyledImg = styled.img`
+  position: absolute;
   width: 100vw;
   background-color: hsl(180, 29%, 50%);
-  position: sticky;
+  z-index: -1;
 `;
 
 function Header() {
