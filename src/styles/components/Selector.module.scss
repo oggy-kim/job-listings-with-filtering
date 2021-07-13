@@ -8,4 +8,50 @@
   border-radius: 5px;
   box-shadow: 5px 5px 5px $neutral-filter-tablets;
   visibility: hidden;
+  align-items: center;
+
+  &.active {
+    visibility: visible;
+  }
+}
+
+.option {
+  color: $primary;
+  font-size: 0.8rem;
+  font-weight: $weights-bold;
+  font-family: 'Spartan';
+  background-color: $neutral-background;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: inherit;
+  margin: 5px;
+
+  & > .text {
+    padding: 10px;
+  }
+
+  & > .delete {
+    color: white;
+    background-color: $primary;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+
+    &:hover {
+      background-color: black;
+      cursor: pointer;
+    }
+  }
+}
+
+.clear {
+  color: $primary;
+  font-size: 1.2rem;
+  font-weight: $weights-bold;
+  margin-left: auto;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

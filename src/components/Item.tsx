@@ -1,10 +1,11 @@
 import * as React from 'react';
-import type { RootState } from 'src/redux';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../redux';
+import { addOption } from '../redux/optionsSlice';
 
 import style from '../styles/components/Item.module.scss';
 
 function Item(props: RootState['list']) {
-  console.log(props);
   const {
     company,
     contract,
@@ -30,11 +31,19 @@ function Item(props: RootState['list']) {
     return <span className={`${style.icon} ${style.featured}`}>FEATURED</span>;
   };
 
+  const optionsSelector = useSelector((state: RootState) => state.options);
+  const dispatch = useDispatch();
+
+
+  const handleClick = (option: string) => {
+    !optionsSelector.includes(option) && dispatch(addOption(option));
+  }
+
   const Types = () => {
     return (
       <div className={`${style.options}`}>
         {options.map((option) => {
-          return <button className={`${style.option}`}>{option}</button>;
+          return <button className={`${style.option}`} key={option} onClick={e => handleClick(option)}>{option}</button>;
         })}
       </div>
     );

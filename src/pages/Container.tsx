@@ -10,6 +10,7 @@ import Item from '../components/Item';
 
 function Container() {
   const list = useSelector((state: RootState) => state.list);
+  const options = useSelector((state: RootState) => state.options);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -35,7 +36,7 @@ function Container() {
     <>
       <Header />
       <div className={`${style.container}`}>
-        <Selector />
+        <Selector options={options} />
         <Items />
       </div>
     </>
