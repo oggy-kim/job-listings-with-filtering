@@ -4,7 +4,6 @@ import { deleteAllOptions, deleteOption } from '../redux/optionsSlice';
 import style from '../styles/components/Selector.module.scss';
 
 function Selector({ options }: { options: string[] }) {
-  console.log(options);
   const active = options.length ? style.active : '';
   const dispatch = useDispatch();
 
@@ -14,7 +13,6 @@ function Selector({ options }: { options: string[] }) {
 
   const Types = () => {
     const handleClick = (option: string) => {
-      console.log(option);
       dispatch(deleteOption(option));
     };
 
@@ -23,9 +21,12 @@ function Selector({ options }: { options: string[] }) {
         {options.map((option) => {
           return (
             <>
-              <div className={`${style.option}`} key={option}>
-                <div className={`${style.text}`}>{option}</div>
+              <div className={`${style.option}`} key={`container ${option}`}>
+                <div className={`${style.text}`} key={`text ${option}`}>
+                  {option}
+                </div>
                 <div
+                  key={`delete ${option}`}
                   className={`${style.delete}`}
                   onClick={(e) => handleClick(option)}
                 >

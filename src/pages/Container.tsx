@@ -5,7 +5,7 @@ import Selector from '../components/Selector';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../redux';
 import getJobList from '../api/getJobList';
-import { getList } from '../redux/listSlice';
+import { filteredList, getList } from '../redux/listSlice';
 import Item from '../components/Item';
 
 function Container() {
@@ -18,15 +18,17 @@ function Container() {
       const { data } = await getJobList();
       dispatch(getList(data));
     };
-    fetchJobList();
-  }, []);
-
-  console.log(list);
+    fetchJobList().then((res) => {
+      if (options.length) {
+        dispatch(filteredList(options));
+      }
+    });
+  }, [options]);
   const Items = React.useCallback(() => {
     return (
       <>
-        {Object.values(list).map((props) => {
-          return <Item {...props} />;
+        {list.map((item) => {
+          return <Item key={item.id} {...item} />;
         })}
       </>
     );

@@ -34,16 +34,23 @@ function Item(props: RootState['list']) {
   const optionsSelector = useSelector((state: RootState) => state.options);
   const dispatch = useDispatch();
 
-
   const handleClick = (option: string) => {
     !optionsSelector.includes(option) && dispatch(addOption(option));
-  }
+  };
 
   const Types = () => {
     return (
       <div className={`${style.options}`}>
         {options.map((option) => {
-          return <button className={`${style.option}`} key={option} onClick={e => handleClick(option)}>{option}</button>;
+          return (
+            <button
+              className={`${style.option}`}
+              key={option}
+              onClick={(e) => handleClick(option)}
+            >
+              {option}
+            </button>
+          );
         })}
       </div>
     );
