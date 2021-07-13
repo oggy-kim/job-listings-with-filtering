@@ -18,28 +18,32 @@ function Container() {
       const { data } = await getJobList();
       dispatch(getList(data));
     };
-    fetchJobList().then((res) => {
-      if (options.length) {
-        dispatch(filteredList(options));
-      }
-    });
-  }, [options]);
-  const Items = React.useCallback(() => {
-    return (
-      <>
-        {list.map((item) => {
-          return <Item key={item.id} {...item} />;
-        })}
-      </>
-    );
-  }, [list]);
+    fetchJobList();
+  }, []);
+  const Items = React.useCallback(
+    ({ list }) => {
+      const renderList = list.filter(({ role, level, languages }) => {
+        const itemOptions = [role, level, ...languages];
+        return options.every((option) => itemOptions.includes(option));
+      });
+
+      return (
+        <>
+          {renderList.map((item) => {
+            return <Item key={item.id} {...item} />;
+          })}
+        </>
+      );
+    },
+    [options],
+  );
 
   return (
     <>
       <Header />
       <div className={`${style.container}`}>
         <Selector options={options} />
-        <Items />
+        <Items list={list} />
       </div>
     </>
   );
