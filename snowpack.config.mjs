@@ -7,7 +7,15 @@ export default {
   plugins: [
     '@snowpack/plugin-react-refresh',
     '@snowpack/plugin-dotenv',
-    '@snowpack/plugin-sass',
+    '@snowpack/plugin-webpack',
+    [
+      '@snowpack/plugin-sass',
+      {
+        compilerOptions: {
+          loadPath: './src',
+        },
+      },
+    ],
     [
       '@snowpack/plugin-typescript',
       {
@@ -22,7 +30,7 @@ export default {
   ],
   optimize: {
     /* Example: Bundle your final build: */
-    bundle: true,
+    // bundle: true,
   },
   packageOptions: {
     /* ... */

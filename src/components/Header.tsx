@@ -1,5 +1,4 @@
 import * as React from 'react';
-import svg from '../assets/images/bg-header-desktop.svg';
 import styled from 'styled-components';
 
 const StyledImg = styled.img`
@@ -10,7 +9,7 @@ const StyledImg = styled.img`
 `;
 
 function Header() {
-  return <StyledImg src={svg} />;
+  return <StyledImg src="./images/bg-header-desktop.svg" />;
 }
 
 export default Header;
