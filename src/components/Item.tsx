@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import type { ListState } from 'src/redux/listSlice';
 import type { RootState } from '../redux';
 import { addOption } from '../redux/optionsSlice';
 
 import style from '../styles/components/Item.module.scss';
 
-function Item(props: RootState['list']) {
+function Item(props: ListState) {
   const {
     company,
     contract,
@@ -21,7 +22,9 @@ function Item(props: RootState['list']) {
     tools,
   } = props;
 
-  const options = [].concat(role, level, languages);
+  const optionsArr: string[] = [];
+
+  const options = optionsArr.concat(role, level, languages);
 
   const NewIcon = () => {
     return <span className={`${style.icon} ${style.new}`}>NEW!</span>;

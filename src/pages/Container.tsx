@@ -5,7 +5,7 @@ import Selector from '../components/Selector';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../redux';
 import getJobList from '../api/getJobList';
-import { filteredList, getList } from '../redux/listSlice';
+import { getList, ListState } from '../redux/listSlice';
 import Item from '../components/Item';
 
 function Container() {
@@ -21,11 +21,13 @@ function Container() {
     fetchJobList();
   }, []);
   const Items = React.useCallback(
-    ({ list }) => {
-      const renderList = list.filter(({ role, level, languages }) => {
-        const itemOptions = [role, level, ...languages];
-        return options.every((option) => itemOptions.includes(option));
-      });
+    ({ list }: { list: ListState[] }) => {
+      const renderList = list.filter(
+        ({ role, level, languages }: ListState) => {
+          const itemOptions = [role, level, ...languages];
+          return options.every((option) => itemOptions.includes(option));
+        },
+      );
 
       return (
         <>
