@@ -5,4 +5,8 @@
   padding: 100px;
   display: flex;
   flex-direction: column;
+
+  @include mobile {
+    padding: 15px;
+  }
 }

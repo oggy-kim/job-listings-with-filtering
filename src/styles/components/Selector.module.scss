@@ -6,12 +6,25 @@
   padding: 30px;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px $neutral-filter-tablets;
+  box-shadow: 1px 5px 5px $neutral-filter-tablets;
   visibility: hidden;
   align-items: center;
 
   &.active {
     visibility: visible;
+
+    @include mobile {
+      padding: 10px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.options {
+  display: flex;
+
+  @include mobile {
+    flex-wrap: wrap;
   }
 }
 

@@ -17,7 +17,7 @@ function Selector({ options }: { options: string[] }) {
     };
 
     return (
-      <>
+      <div className={`${style.options}`}>
         {options.map((option) => {
           return (
             <>
@@ -36,7 +36,7 @@ function Selector({ options }: { options: string[] }) {
             </>
           );
         })}
-      </>
+      </div>
     );
   };
 
